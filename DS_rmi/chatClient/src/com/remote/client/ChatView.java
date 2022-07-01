@@ -280,7 +280,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jButton2.setToolTipText("read file");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -456,7 +456,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:\
 //        try {
 //                Registry reg=LocateRegistry.getRegistry("localhost",4444);
@@ -488,7 +488,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
 //            }
         
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSend;
