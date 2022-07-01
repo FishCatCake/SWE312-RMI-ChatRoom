@@ -41,7 +41,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         this.name = name;
         
         //detecter le group de client: simple user ou admin pour bourser a l'admin les permission (activer,block,supprimer) clients
-        if(autorization.equals("Administrator")){
+        if(autorization.equals("Lecturer")){
             System.out.print(autorization);
             listConnect.setComponentPopupMenu(jPopupMenu1);
         }
@@ -154,6 +154,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         jMenuItem1.setText("Remove Users");
         jMenuItem1.setActionCommand("");
@@ -201,7 +202,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
 
         btnSend.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSend.setText("Send");
-        btnSend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSend.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendActionPerformed(evt);
@@ -220,7 +221,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
 
         jButton1.setText("Refresh");
         jButton1.setActionCommand("");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -230,7 +231,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setText("Upload");
         jButton3.setToolTipText("upload File");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -275,6 +276,14 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Shared Files");
 
+        jButton2.setText("Read");
+        jButton2.setToolTipText("read file");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -295,8 +304,12 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 55, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -305,7 +318,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +337,8 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -441,11 +455,46 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-    
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:\
+//        try {
+//                Registry reg=LocateRegistry.getRegistry("localhost",4444);
+//                RemoteInterface file =  (RemoteInterface) reg.lookup ("RemoteClass");
+//                file.setUsername(getTitle());
+//
+//                jta.append("queueing up...\n");
+//                jta.update(jta.getGraphics());
+//                System.out.println("queueing up...");
+//                file.read(jtf.getText().trim()+".txt");
+//                file.acquireQueueSemaphore(jtf.getText().trim()+".txt");
+//                file.acquireResourceSemaphore(jtf.getText().trim()+".txt");
+//                file.releaseQueueSemaphore(jtf.getText().trim()+".txt");
+//                file.trueRead(jtf.getText().trim()+".txt");
+//                file.setUsername(getTitle());
+//                Boolean canWrite=file.write(jtf.getText().trim()+".txt");
+//                jta.append("Writing in progress... "+jtf.getText().trim()+".txt");
+//                if(canWrite){
+//                    this.setEnabled(false);
+//                    file.displayMsgOnServer("writing "+file.getFileName());
+//                    new popUpWrite(this,jtf.getText().trim()+".txt",file.getFileContent());
+//                }
+//                else{
+//                    jta.append("\nFile not existed\n\n");
+//                }
+//                System.out.println("Request write to " + jtf.getText().trim() + ".txt");
+//            }catch (Exception ex1) {
+//                System.out.println ("Exception: " + e);
+//            }
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSend;
     private javax.swing.JTextArea inputMsg;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

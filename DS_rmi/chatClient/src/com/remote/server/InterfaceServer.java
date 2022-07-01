@@ -9,10 +9,10 @@ import java.util.Vector;
 
 
 public interface InterfaceServer extends Remote{    
-    //cette fonction pour distribuer un message vers tous clients connectées
+    //distribute a message to all connected clients
     void broadcastMessage(String message,List<String> list) throws RemoteException;
     
-    //cette fonction pour distribuer un fichier partagée vers tous clients connectes
+    //distribute a shared file to all connected clients
     void broadcastMessage(ArrayList<Integer> inc,List<String> list,String filename) throws RemoteException;
     
     //cette fonction pour recupere le nom des clients connectes

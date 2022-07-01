@@ -139,7 +139,7 @@ public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
             }
         }
     }
-    //cette fonction pour verfifier est que un username existe deja dans le serveur ou non, car username est l'identificateur sur chat
+    //check if a username already exists in the server or not, because username is the identifier on chat
     @Override
     public boolean checkUsername(String username) throws RemoteException {
         boolean exist = false;
