@@ -25,7 +25,7 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
     private final JTextArea output;
     private final JPanel jpanel;
     
-    //constructeur
+    //constructor
     public ChatClient(String name , InterfaceServer server,JTextArea jtext1,JTextArea jtext2,JPanel jpanel) throws RemoteException{
         this.name = name;
         this.server = server;
@@ -35,13 +35,13 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         server.addClient(this);
     }
     
-    //cette fonction pour recupere les messages de la discuttions a partir de server
+    //retrieve messages from the server
     @Override
     public void retrieveMessage(String message) throws RemoteException {
         output.setText(output.getText() + "\n" + message);
     }
     
-    //cette fonction pour recuperer les fichiers partagées de la discussion a partir de server
+    //retrieve the shared files of the discussion from server
     @Override
     public void retrieveMessage(String filename, ArrayList<Integer> inc) throws RemoteException {
         JLabel label = new JLabel("<HTML><U><font size=\"4\" color=\"#365899\">" + filename + "</font></U></HTML>");
@@ -97,7 +97,7 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         jpanel.revalidate();
     }
     
-    //cette fonction pour envoyer un message vers le serveur
+    //send a message to the server
     @Override
     public void sendMessage(List<String> list) {
         try {
@@ -107,13 +107,13 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         }
     }
     
-    //cette fonction pour recupere le nom d'un client connectées
+    // retrieve the name of a connected client
     @Override
     public String getName() {
         return name;
     }
 
-    //cette fonction pour desactiver a un client la fonctionnalité d'envoyer un message
+    // disable a client's ability to send a message
     @Override
     public void closeChat(String message) throws RemoteException {
         input.setEditable(false);
@@ -121,7 +121,7 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         JOptionPane.showMessageDialog(new JFrame(),message,"Alert",JOptionPane.WARNING_MESSAGE); 
     }
 
-    //cette fonction pour activer a un client la fonctionnalité d'envoyer un message
+    //enable a client to send a message
     @Override
     public void openChat() throws RemoteException {
         input.setEditable(true);
