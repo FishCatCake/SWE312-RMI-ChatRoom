@@ -14,12 +14,14 @@ import java.io.PrintWriter;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import static jdk.jfr.internal.handlers.EventHandler.timestamp;
 
 
 public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
@@ -109,19 +111,17 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
             server.broadcastMessage(name + " : " + input.getText(),list);         
             
             String msg = name + " : " + input.getText();
-            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("chatLog.txt", true)))) {
-                    writer.append(msg + "\n");
-                    
+            Date tdate =  new Date();
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("/users/apple/Repo/DS/DS_rmi/chatClient/src/com/remote/client/chatLog.txt", true)))) {
+                    writer.append(tdate.toString() +"  "+ msg + "\n");
+                    writer.close();
                     System.out.println("Successfully wrote to the file.");
+            }catch (IOException e) {
+                System.out.println("An error occurred; " + e.getMessage());
             }
             
         }catch (RemoteException ex) {
-            System.out.println("Error: " + ex.getMessage());
-            
-        }catch (IOException e) {
-                System.out.println("An error occurred; " + e.getMessage());
-            }finally{
-            writer.close();
+            System.out.println("Error: " + ex.getMessage());    
         }
     }
     
