@@ -61,25 +61,25 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jPanel2.setLayout(new GridLayout(100,1));
         jPanel2.setBorder(new EmptyBorder(5, 10, 10, 10));
         
-//        //questioned the customer before closing the chat, if yes we delete it in the customer list
-//        this.addWindowListener(new java.awt.event.WindowAdapter() {    
-//            @Override
-//            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-//                if (JOptionPane.showConfirmDialog(new JFrame(), 
-//                    "Are you sure you want to close this chat ?", "Close chat?", 
-//                    JOptionPane.YES_NO_OPTION,
-//                    JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-//                    try {
-//                        server.removeClient(name);
-//                    } catch (RemoteException ex) {
-//                        System.out.println("Error: " + ex.getMessage());
-//                    }
-//                    System.exit(0);
-//                }else{
-//                   
-//                }
-//            }
-//        });
+        //questioned the customer before closing the chat, if yes we delete it in the customer list
+        this.addWindowListener(new java.awt.event.WindowAdapter() {    
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(new JFrame(), 
+                    "Are you sure you want to close this chat ?", "Close chat?", 
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+                    try {
+                        server.removeClient(name);
+                    } catch (RemoteException ex) {
+                        System.out.println("Error: " + ex.getMessage());
+                    }
+                    System.exit(0);
+                }else{
+                   
+                }
+            }
+        });
         
         //a placeholder on the textfield of the message
         inputMsg.setForeground(Color.GRAY);
