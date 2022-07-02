@@ -4,19 +4,24 @@ import com.remote.server.InterfaceServer;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
+import java.io.FileWriter;//add
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import static jdk.jfr.internal.handlers.EventHandler.timestamp;
 
 
 public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
@@ -26,7 +31,7 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
     private final JTextArea output;
     private final JPanel jpanel;
     
-    //constructor
+    //constructeur
     public ChatClient(String name , InterfaceServer server,JTextArea jtext1,JTextArea jtext2,JPanel jpanel) throws RemoteException{
         this.name = name;
         this.server = server;
@@ -36,13 +41,14 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         server.addClient(this);
     }
     
-    //retrieve messages from the server
+    //cette fonction pour recupere les messages de la discuttions a partir de server
     @Override
     public void retrieveMessage(String message) throws RemoteException {
         output.setText(output.getText() + "\n" + message);
+     
     }
     
-    //retrieve the shared files of the discussion from server
+    //cette fonction pour recuperer les fichiers partagées de la discussion a partir de server
     @Override
     public void retrieveMessage(String filename, ArrayList<Integer> inc) throws RemoteException {
         JLabel label = new JLabel("<HTML><U><font size=\"4\" color=\"#365899\">" + filename + "</font></U></HTML>");
@@ -98,54 +104,34 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         jpanel.revalidate();
     }
     
-    // open a shared file and edit
-    public void editMessage(String filename, String content){
-//        FileWriter w = null;
-//        FileWriter w_replica = null;
-//        try{
-//            w = new FileWriter("./bulletin/"+name+".txt");
-//            w_replica = new FileWriter("./bulletin/"+name+"_replica.txt");
-//        }catch(IOException e1){
-//            e1.printStackTrace();
-//        }
-//        
-//        try{
-//            w.write(content);
-//            w_replica.write(content);
-//        }catch(IOException e2){
-//            e2.printStackTrace();
-//        }
-//        
-//        try{
-//            w.close();
-//            w_replica.close();
-//            updateBulletins();
-//            return true;
-//        }catch(IOException e3){
-//            e3.printStackTrace();
-//        }
-//        
-//        return false;
-    }
-    
-    
-    //send a message to the server
+    //cette fonction pour envoyer un message vers le serveur
     @Override
     public void sendMessage(List<String> list) {
         try {
-            server.broadcastMessage(name + " : " + input.getText(),list);
-        } catch (RemoteException ex) {
-            System.out.println("Error: " + ex.getMessage());
+            server.broadcastMessage(name + " : " + input.getText(),list);         
+            
+            String msg = name + " : " + input.getText();
+            Date tdate =  new Date();
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("/users/apple/Repo/DS/DS_rmi/chatClient/src/com/remote/client/chatLog.txt", true)))) {
+                    writer.append(tdate.toString() +"  "+ msg + "\n");
+                    writer.close();
+                    System.out.println("Successfully wrote to the file.");
+            }catch (IOException e) {
+                System.out.println("An error occurred; " + e.getMessage());
+            }
+            
+        }catch (RemoteException ex) {
+            System.out.println("Error: " + ex.getMessage());    
         }
     }
     
-    // retrieve the name of a connected client
+    //cette fonction pour recupere le nom d'un client connectées
     @Override
     public String getName() {
         return name;
     }
 
-    // disable a client's ability to send a message
+    //cette fonction pour desactiver a un client la fonctionnalité d'envoyer un message
     @Override
     public void closeChat(String message) throws RemoteException {
         input.setEditable(false);
@@ -153,7 +139,7 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         JOptionPane.showMessageDialog(new JFrame(),message,"Alert",JOptionPane.WARNING_MESSAGE); 
     }
 
-    //enable a client to send a message
+    //cette fonction pour activer a un client la fonctionnalité d'envoyer un message
     @Override
     public void openChat() throws RemoteException {
         input.setEditable(true);
