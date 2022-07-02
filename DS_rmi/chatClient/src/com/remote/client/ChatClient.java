@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -96,6 +97,37 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         jpanel.repaint();
         jpanel.revalidate();
     }
+    
+    // open a shared file and edit
+    public void editMessage(String filename, String content){
+//        FileWriter w = null;
+//        FileWriter w_replica = null;
+//        try{
+//            w = new FileWriter("./bulletin/"+name+".txt");
+//            w_replica = new FileWriter("./bulletin/"+name+"_replica.txt");
+//        }catch(IOException e1){
+//            e1.printStackTrace();
+//        }
+//        
+//        try{
+//            w.write(content);
+//            w_replica.write(content);
+//        }catch(IOException e2){
+//            e2.printStackTrace();
+//        }
+//        
+//        try{
+//            w.close();
+//            w_replica.close();
+//            updateBulletins();
+//            return true;
+//        }catch(IOException e3){
+//            e3.printStackTrace();
+//        }
+//        
+//        return false;
+    }
+    
     
     //send a message to the server
     @Override

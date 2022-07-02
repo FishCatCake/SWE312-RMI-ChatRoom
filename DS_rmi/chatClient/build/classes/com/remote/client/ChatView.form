@@ -280,6 +280,9 @@
               <Font name="Dialog" size="14" style="0"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="ChatView_jPanel1"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">

@@ -123,7 +123,7 @@ public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
         }
     }
 
-    //activate a client in chat, according to be in the case of "block
+    //activate a client in chat, according to be in the case of "block"
     @Override
     public synchronized void reactiveClient(List<String> clients) throws RemoteException {
         for(int j=0;j<this.blockedClients.size();j++){
