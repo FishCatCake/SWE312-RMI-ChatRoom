@@ -4,9 +4,13 @@ import com.remote.server.InterfaceServer;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;//add
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -39,6 +43,7 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
     @Override
     public void retrieveMessage(String message) throws RemoteException {
         output.setText(output.getText() + "\n" + message);
+     
     }
     
     //cette fonction pour recuperer les fichiers partagées de la discussion a partir de server
@@ -101,9 +106,22 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
     @Override
     public void sendMessage(List<String> list) {
         try {
-            server.broadcastMessage(name + " : " + input.getText(),list);
-        } catch (RemoteException ex) {
+            server.broadcastMessage(name + " : " + input.getText(),list);         
+            
+            String msg = name + " : " + input.getText();
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("chatLog.txt", true)))) {
+                    writer.append(msg + "\n");
+                    
+                    System.out.println("Successfully wrote to the file.");
+            }
+            
+        }catch (RemoteException ex) {
             System.out.println("Error: " + ex.getMessage());
+            
+        }catch (IOException e) {
+                System.out.println("An error occurred; " + e.getMessage());
+            }finally{
+            writer.close();
         }
     }
     
