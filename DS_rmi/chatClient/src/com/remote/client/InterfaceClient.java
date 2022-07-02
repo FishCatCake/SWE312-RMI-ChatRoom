@@ -19,9 +19,9 @@ public interface InterfaceClient extends Remote{
     //cette fonction pour recuperer le nom des clients connectes (identificateur des clients) ==> username
     String getName()throws RemoteException;
     
-    //cette fonction pour desactiver a un client la fonctionnalité d'envoyer un message
-    void closeChat(String message) throws RemoteException;
-    
-    //cette fonction pour activer a un client la fonctionnalité d'envoyer un message
-    void openChat() throws RemoteException;
+//    //cette fonction pour desactiver a un client la fonctionnalité d'envoyer un message
+//    void closeChat(String message) throws RemoteException;
+//    
+//    //cette fonction pour activer a un client la fonctionnalité d'envoyer un message
+//    void openChat() throws RemoteException;
 }
