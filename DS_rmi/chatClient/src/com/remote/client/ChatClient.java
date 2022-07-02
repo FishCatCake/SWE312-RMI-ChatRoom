@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import static jdk.jfr.internal.handlers.EventHandler.timestamp;
+
 
 
 public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
@@ -112,7 +112,8 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
             
             String msg = name + " : " + input.getText();
             Date tdate =  new Date();
-            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("/users/apple/Repo/DS/DS_rmi/chatClient/src/com/remote/client/chatLog.txt", true)))) {
+            //try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("/users/apple/Repo/DS/DS_rmi/chatClient/src/com/remote/client/chatLog.txt", true)))) {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("chatLog.txt", true)))) {
                     writer.append(tdate.toString() +"  "+ msg + "\n");
                     writer.close();
                     System.out.println("Successfully wrote to the file.");
