@@ -10,10 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-public class LoginView extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
     private InterfaceServer server;
     
-    public LoginView() {
+    public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("login.png")));
@@ -137,11 +137,11 @@ public class LoginView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
         java.awt.EventQueue.invokeLater(() -> {
-            new LoginView().setVisible(true);
+            new Login().setVisible(true);
         });
     }
 

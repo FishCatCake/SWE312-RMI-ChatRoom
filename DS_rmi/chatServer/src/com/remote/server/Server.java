@@ -7,33 +7,21 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-
-
-public class Main extends JFrame {
-    
-    public JTextArea jta = new JTextArea();
+public class Server  extends JFrame {
+     public JTextArea jta = new JTextArea();
      // constructor
-    public Main()
+     public Server()
     {
 
     }
-        public static void main (String[] args) {
-        Main main= new Main();
-        main.build();
+     public static void main (String[] args) {
+        Server server= new Server();
+        server.build();
     }
   
-//    public static void main(String []args){
-//        try {
-//            LocateRegistry.createRegistry(4321);
-//            Naming.rebind("rmi://localhost:4321/remote",new ChatServer());
-//            System.out.println("Server started at " + new Date() + '\n'");
-//        } catch (MalformedURLException | RemoteException ex) {
-//            System.out.println("Error: " + ex.getMessage());
-//        }
-//    }
-    
+   
          public void build(){
-        Main s1 = new Main();
+        Server s1 = new Server();
         try{
            LocateRegistry.createRegistry(4321);
             Naming.rebind("rmi://localhost:4321/remote",new ChatServer());
@@ -54,10 +42,7 @@ public class Main extends JFrame {
         }
     }
 
-    public void displayMsg(Main obj, String s){
+    public void displayMsg(Server obj, String s){
         obj.jta.append(s + ".\n");
     }
-        
-    
-    
 }
