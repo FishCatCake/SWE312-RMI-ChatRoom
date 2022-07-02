@@ -61,25 +61,25 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jPanel2.setLayout(new GridLayout(100,1));
         jPanel2.setBorder(new EmptyBorder(5, 10, 10, 10));
         
-        //questioned the customer before closing the chat, if yes we delete it in the customer list
-        this.addWindowListener(new java.awt.event.WindowAdapter() {    
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(new JFrame(), 
-                    "Are you sure you want to close this chat ?", "Close chat?", 
-                    JOptionPane.YES_NO_OPTION,
-                    JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-                    try {
-                        server.removeClient(name);
-                    } catch (RemoteException ex) {
-                        System.out.println("Error: " + ex.getMessage());
-                    }
-                    System.exit(0);
-                }else{
-                   
-                }
-            }
-        });
+//        //questioned the customer before closing the chat, if yes we delete it in the customer list
+//        this.addWindowListener(new java.awt.event.WindowAdapter() {    
+//            @Override
+//            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+//                if (JOptionPane.showConfirmDialog(new JFrame(), 
+//                    "Are you sure you want to close this chat ?", "Close chat?", 
+//                    JOptionPane.YES_NO_OPTION,
+//                    JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+//                    try {
+//                        server.removeClient(name);
+//                    } catch (RemoteException ex) {
+//                        System.out.println("Error: " + ex.getMessage());
+//                    }
+//                    System.exit(0);
+//                }else{
+//                   
+//                }
+//            }
+//        });
         
         //a placeholder on the textfield of the message
         inputMsg.setForeground(Color.GRAY);
@@ -386,29 +386,17 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
 
     //action on the popup menu "delete client".
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try {
-            server.removeClient(listConnect.getSelectedValuesList());
-        } catch (RemoteException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        } 
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     // popup menu "block clients"
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        try {
-            server.blockClient(listConnect.getSelectedValuesList());
-        } catch (RemoteException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     //action  popup menu "activate clients"
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        try {
-            server.reactiveClient(listConnect.getSelectedValuesList());
-        } catch (RemoteException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     ///on the button "send file", first verified is this file verified the available extensions before sending
@@ -462,6 +450,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
 //action on the "Read" button to read a file
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:\
@@ -498,7 +487,7 @@ JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDi
                 jPanel2.repaint();
                 jPanel2.revalidate();
             }else{
-                JOptionPane.showMessageDialog(this,"You can only upload file have an extension like: xml,exe,jpg,png,jpeg,pdf,c,cpp,jar,java,txt,php ","Alert",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this,"You can only upload file have an extension txt ","Alert",JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -527,7 +516,7 @@ JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDi
     private javax.swing.JTextArea listMessage;
     // End of variables declaration//GEN-END:variables
 
-    //the thread function for the "update" button
+    //the thread function for the "refresh" button
     @Override
     public void run() {
         try {

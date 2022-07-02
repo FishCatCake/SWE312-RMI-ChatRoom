@@ -132,18 +132,18 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
         return name;
     }
 
-    // disable a client's ability to send a message
-    @Override
-    public void closeChat(String message) throws RemoteException {
-        input.setEditable(false);
-        input.setEnabled(false);
-        JOptionPane.showMessageDialog(new JFrame(),message,"Alert",JOptionPane.WARNING_MESSAGE); 
-    }
-
-    //enable a client to send a message
-    @Override
-    public void openChat() throws RemoteException {
-        input.setEditable(true);
-        input.setEnabled(true);    
-    }
+//    // disable a client's ability to send a message
+//    @Override
+//    public void closeChat(String message) throws RemoteException {
+//        input.setEditable(false);
+//        input.setEnabled(false);
+//        JOptionPane.showMessageDialog(new JFrame(),message,"Alert",JOptionPane.WARNING_MESSAGE); 
+//    }
+//
+//    //enable a client to send a message
+//    @Override
+//    public void openChat() throws RemoteException {
+//        input.setEditable(true);
+//        input.setEnabled(true);    
+//    }
 }

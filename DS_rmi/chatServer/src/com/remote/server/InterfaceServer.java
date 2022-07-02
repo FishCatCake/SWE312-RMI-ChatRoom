@@ -21,17 +21,17 @@ public interface InterfaceServer extends Remote{
     // add a connected client to the list of connected clients
     void addClient(InterfaceClient client) throws RemoteException;
     
-    //block a client from sending a message, but it can receive the messages
-    void blockClient(List<String> clients) throws RemoteException;
-    
-    //completely remove a list of chat clients (kick-out)
-    void removeClient(List<String> clients) throws RemoteException;
-    
-    //completely remove a single chat client (kick-out)
-    void removeClient(String clients) throws RemoteException;
-    
-    //cette fonction pour activer un client dans chat, d'apres etre dans le cas de "block"
-    void reactiveClient(List<String> clients) throws RemoteException;
+//    //block a client from sending a message, but it can receive the messages
+//    void blockClient(List<String> clients) throws RemoteException;
+//    
+//    //completely remove a list of chat clients (kick-out)
+//    void removeClient(List<String> clients) throws RemoteException;
+//    
+//    //completely remove a single chat client (kick-out)
+//    void removeClient(String clients) throws RemoteException;
+//    
+//    //cette fonction pour activer un client dans chat, d'apres etre dans le cas de "block"
+//    void reactiveClient(List<String> clients) throws RemoteException;
     
     //check if a username already exists in the server or not, because username is the identifier on chat
     boolean checkUsername(String username) throws RemoteException;

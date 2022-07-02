@@ -16,15 +16,13 @@ public interface InterfaceClient extends Remote{
     //send a message from a client to the server
     void sendMessage(List<String> list) throws RemoteException;
     
-    //open a shared file and edit
-    void editMessage(String filename,ArrayList<Integer> inc)throws RemoteException;
     
     // retrieve the name of the connected clients (client identifier) ==> username
     String getName()throws RemoteException;
     
-    //disable a client's ability to send a message
-    void closeChat(String message) throws RemoteException;
-    
-    // enable a client to send a message
-    void openChat() throws RemoteException;
+//    //disable a client's ability to send a message
+//    void closeChat(String message) throws RemoteException;
+//    
+//    // enable a client to send a message
+//    void openChat() throws RemoteException;
 }
