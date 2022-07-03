@@ -12,7 +12,7 @@ public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
     private final ArrayList<InterfaceClient> clients; //list contains all clients but not blocked 
     private final ArrayList<InterfaceClient> blockedClients; //list contains all blocked clients
     
-    //constructeur
+    //constructor
     public ChatServer() throws RemoteException{
         super();
         this.clients = new ArrayList<>();
