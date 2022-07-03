@@ -10,13 +10,13 @@ import java.util.Vector;
 
 public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
     private final ArrayList<InterfaceClient> clients; //list contains all clients but not blocked 
-    private final ArrayList<InterfaceClient> blockedClients; //list contains all blocked clients
+//    private final ArrayList<InterfaceClient> blockedClients; //list contains all blocked clients
     
     //constructeur
     public ChatServer() throws RemoteException{
         super();
         this.clients = new ArrayList<>();
-        blockedClients = new ArrayList<>();
+//        blockedClients = new ArrayList<>();
     }
     
     //distribute the message to all connected clients, or a list prescribed by the client (private distribution)
