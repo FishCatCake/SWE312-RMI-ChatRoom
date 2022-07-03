@@ -68,7 +68,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
                     "Are you sure you want to close this chat ?", "Close chat?", 
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-                    try {
+                   try {
                         server.removeClient(name);
                     } catch (RemoteException ex) {
                         System.out.println("Error: " + ex.getMessage());
@@ -433,17 +433,17 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         thread.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    //action on the popup menu "delete client".
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    // popup menu "block clients"
+
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    //action  popup menu "activate clients"
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
