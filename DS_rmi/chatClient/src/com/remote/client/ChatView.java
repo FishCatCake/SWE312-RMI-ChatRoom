@@ -16,8 +16,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+// swing imports
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.JFileChooser;
@@ -43,7 +42,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         this.server = server;
         this.name = name;
         
-        //detect the client group: simple user or admin to grant the admin permission
+        //detect the client role: student or lecturer to grant the admin permission
         if(autorization.equals("Lecturer")){
             System.out.print(autorization);
             listConnect.setComponentPopupMenu(jPopupMenu1);
@@ -61,7 +60,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jPanel2.setLayout(new GridLayout(100,1));
         jPanel2.setBorder(new EmptyBorder(5, 10, 10, 10));
         
-        //questioned the customer before closing the chat, if yes we delete it in the customer list
+        //ask user before closing the chat, if yes we delete it in the user list
         this.addWindowListener(new java.awt.event.WindowAdapter() {    
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -81,7 +80,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
             }
         });
         
-        //a placeholder on the textfield of the message
+        //the placeholder on the textfield of the message
         inputMsg.setForeground(Color.GRAY);
         inputMsg.setText("Enter your Message ...");
         inputMsg.addFocusListener(new FocusListener() {
@@ -203,8 +202,8 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
             public String getElementAt(int i) { return strings[i]; }
         });
         listConnect.setToolTipText("");
-        listConnect.setSelectionBackground(new java.awt.Color(153, 153, 255));
-        listConnect.setSelectionForeground(new java.awt.Color(153, 153, 255));
+        listConnect.setSelectionBackground(new java.awt.Color(204, 204, 255));
+        listConnect.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(listConnect);
 
         inputMsg.setBackground(new java.awt.Color(204, 204, 255));
@@ -219,7 +218,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         inputMsg.getAccessibleContext().setAccessibleName("Enter your Message ...");
 
         btnSend.setBackground(new java.awt.Color(204, 204, 255));
-        btnSend.setFont(new java.awt.Font("Amatic SC", 1, 12)); // NOI18N
+        btnSend.setFont(new java.awt.Font("Amatic SC", 1, 14)); // NOI18N
         btnSend.setForeground(new java.awt.Color(102, 102, 255));
         btnSend.setText("Send");
         btnSend.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -255,7 +254,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         });
 
         jButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jButton3.setFont(new java.awt.Font("Amatic SC", 1, 12)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Amatic SC", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(102, 102, 255));
         jButton3.setText("Upload");
         jButton3.setToolTipText("upload File");
@@ -316,7 +315,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jLabel1.setText("Shared Files");
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setFont(new java.awt.Font("Amatic SC", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Amatic SC", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(102, 102, 255));
         jButton2.setText("Read");
         jButton2.setToolTipText("read file");
@@ -356,10 +355,10 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane2)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnSend, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnSend, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,11 +389,10 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane5)
@@ -403,9 +401,9 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSend))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(6, 6, 6))
