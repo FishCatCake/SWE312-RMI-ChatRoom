@@ -219,7 +219,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         inputMsg.getAccessibleContext().setAccessibleName("Enter your Message ...");
 
         btnSend.setBackground(new java.awt.Color(204, 204, 255));
-        btnSend.setFont(new java.awt.Font("Amatic SC", 1, 18)); // NOI18N
+        btnSend.setFont(new java.awt.Font("Amatic SC", 1, 12)); // NOI18N
         btnSend.setForeground(new java.awt.Color(102, 102, 255));
         btnSend.setText("Send");
         btnSend.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -255,7 +255,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         });
 
         jButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jButton3.setFont(new java.awt.Font("Amatic SC", 1, 18)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Amatic SC", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(102, 102, 255));
         jButton3.setText("Upload");
         jButton3.setToolTipText("upload File");
@@ -300,13 +300,13 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 181, Short.MAX_VALUE)
+            .addGap(0, 191, Short.MAX_VALUE)
         );
 
         jScrollPane5.setViewportView(jPanel2);
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 255));
-        jLabel3.setFont(new java.awt.Font("Amatic SC", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Amatic SC", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 255));
         jLabel3.setText("Shared File Content");
 
@@ -316,7 +316,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         jLabel1.setText("Shared Files");
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setFont(new java.awt.Font("Amatic SC", 1, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Amatic SC", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(102, 102, 255));
         jButton2.setText("Read");
         jButton2.setToolTipText("read file");
