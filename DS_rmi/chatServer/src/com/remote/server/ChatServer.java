@@ -10,13 +10,11 @@ import java.util.Vector;
 
 public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
     private final ArrayList<InterfaceClient> clients; //list contains all clients but not blocked 
-//    private final ArrayList<InterfaceClient> blockedClients; //list contains all blocked clients
     
     //constructeur
     public ChatServer() throws RemoteException{
         super();
         this.clients = new ArrayList<>();
-//        blockedClients = new ArrayList<>();
     }
     
     //distribute the message to all connected clients, or a list prescribed by the client (private distribution)
@@ -74,82 +72,13 @@ public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
         }
         return list;
     }
-//    
-//    //block a client from sending a message, but it can receive the messages
-//    @Override
-//    public synchronized void blockClient(List<String> clients){
-//        for(int j=0;j<this.clients.size();j++){
-//            for(int i=0;i<clients.size();i++){
-//                try {
-//                    if(this.clients.get(j).getName().equals(clients.get(i))){
-//                        this.clients.get(j).closeChat(clients + " you are blocked by admin");
-//                        blockedClients.add(this.clients.get(j));
-//                    }
-//                } catch (RemoteException ex) {
-//                    System.out.println("Error: " + ex.getMessage());
-//                }
-//            }
-//        }
-//    }
-//    
-//    //completely remove a list of chat clients (kick-out)
-//    @Override
-//    public synchronized void removeClient(List<String> clients){
-//        for(int j=0;j<this.clients.size();j++){
-//            for(int i=0;i<clients.size();i++){
-//                try {
-//                    if(this.clients.get(j).getName().equals(clients.get(i))){
-//                        this.clients.get(j).closeChat(clients.get(i) + " you are removed from the chat");
-//                        this.clients.remove(j);
-//                    }
-//                } catch (RemoteException ex) {
-//                    System.out.println("Error: " + ex.getMessage());
-//                }
-//            }
-//        }
-//    }
-//    
-//    //completely remove a single chat client (kick-out)
-//    @Override
-//    public synchronized void removeClient(String clients){
-//        for(int j=0;j<this.clients.size();j++){
-//            try {
-//                if(this.clients.get(j).getName().equals(clients)){
-//                    this.clients.remove(j);
-//                }
-//            } catch (RemoteException ex) {
-//                System.out.println("Error: " + ex.getMessage());
-//            }
-//        }
-//    }
-//
-//    //activate a client in chat, according to be in the case of "block"
-//    @Override
-//    public synchronized void reactiveClient(List<String> clients) throws RemoteException {
-//        for(int j=0;j<this.blockedClients.size();j++){
-//            for(int i=0;i<clients.size();i++){
-//                try {
-//                    if(this.blockedClients.get(j).getName().equals(clients.get(i))){
-//                        this.blockedClients.get(j).openChat();
-//                        this.blockedClients.remove(j);
-//                    }
-//                } catch (RemoteException ex) {
-//                    System.out.println("Error: " + ex.getMessage());
-//                }
-//            }
-//        }
-//    }
+
     //check if a username already exists in the server or not, because username is the identifier on chat
     @Override
     public boolean checkUsername(String username) throws RemoteException {
         boolean exist = false;
         for(int i=0;i<clients.size();i++){
             if(clients.get(i).getName().equals(username)){
-                exist = true;
-            }
-        }
-        for(int i=0;i<blockedClients.size();i++){
-            if(blockedClients.get(i).getName().equals(username)){
                 exist = true;
             }
         }
