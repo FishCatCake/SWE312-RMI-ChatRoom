@@ -16,7 +16,6 @@ public interface InterfaceClient extends Remote{
     //send a message from a client to the server
     void sendMessage(List<String> list) throws RemoteException;
     
-    
     // retrieve the name of the connected clients (client identifier) ==> username
     String getName()throws RemoteException;
 

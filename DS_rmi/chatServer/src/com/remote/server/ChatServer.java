@@ -9,15 +9,15 @@ import java.util.Vector;
 
 
 public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
-    private final ArrayList<InterfaceClient> clients; //list contains all clients but not blocked 
+    private final ArrayList<InterfaceClient> clients; //list contains all clients 
     
-    //constructeur
+    //constructor
     public ChatServer() throws RemoteException{
         super();
         this.clients = new ArrayList<>();
     }
     
-    //distribute the message to all connected clients, or a list prescribed by the client (private distribution)
+    //distribute the message to all connected clients
     @Override
     public synchronized void broadcastMessage(String message,List<String> list) throws RemoteException {
         if(list.isEmpty()){
@@ -36,7 +36,7 @@ public class ChatServer extends UnicastRemoteObject implements InterfaceServer{
         }
     }
     
-    // distribute a file to all connected clients, or a list prescribed by the client (private distribution)
+    // distribute a file to all connected clients
     @Override
     public synchronized void broadcastMessage(ArrayList<Integer> inc, List<String> list,String filename) throws RemoteException {
         if(list.isEmpty()){
