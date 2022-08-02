@@ -21,7 +21,7 @@ public interface InterfaceServer extends Remote{
     //add a connected client to the list of connected clients
     void addClient(InterfaceClient client) throws RemoteException;
     
-        //completely remove a list of chat clients (kick-out)
+    //completely remove a list of chat clients (kick-out)
     void removeClient(List<String> clients) throws RemoteException;
     
     //completely remove a single chat client (kick-out)

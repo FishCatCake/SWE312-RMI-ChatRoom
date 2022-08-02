@@ -114,8 +114,8 @@ public class ChatClient extends UnicastRemoteObject implements InterfaceClient{
             Date tdate =  new Date();
             
             // file path of chatLog.txt
-            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("E:\\Year 3\\SWE312 Distributed Systems\\Project\\DS\\DS_rmi\\chatClient\\src\\com\\remote\\client\\chatLog.txt", true)))) {
-            //try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("/users/apple/Repo/DS/DS_rmi/chatClient/src/com/remote/client/chatLog.txt", true)))) {
+//            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("E:\\Year 3\\SWE312 Distributed Systems\\Project\\DS\\DS_rmi\\chatClient\\src\\com\\remote\\client\\chatLog.txt", true)))) {
+            try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("/users/apple/Repo/DS/DS_rmi/chatClient/src/com/remote/client/chatLog.txt", true)))) {
                     writer.append(tdate.toString() +"  "+ msg + "\n");
                     writer.close();
                     System.out.println("Successfully wrote to the file.");
